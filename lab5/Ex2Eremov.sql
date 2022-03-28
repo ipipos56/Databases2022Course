@@ -1,0 +1,19 @@
+CREATE TABLE Item (
+  itemId INTEGER NOT NULL PRIMARY KEY,
+  plant INTEGER NOT NULL REFERENCES Plant(plantId)
+);
+
+CREATE TABLE Plant (
+  plantId INTEGER NOT NULL PRIMARY KEY,
+  company INTEGER NOT NULL REFERENCES Company(companyId)
+);
+
+CREATE TABLE Company (
+  companyId INTEGER NOT NULL PRIMARY KEY,
+  company INTEGER REFERENCES Company(companyId),
+  groupt INTEGER NOT NULL REFERENCES GroupT(groupId)
+);
+
+CREATE TABLE GroupT (
+  groupId INTEGER NOT NULL PRIMARY KEY
+);
