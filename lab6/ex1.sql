@@ -54,21 +54,29 @@ VALUES (2, 3, 34.0);
 INSERT INTO Catalog(sid, pid, cost)
 VALUES (2, 5, 48.0);
 
--- • Find the names of suppliers who supply some red part.
+-- Find the names of suppliers who supply some red part.
 SELECT distinct sname from Suppliers
     join Catalog C on Suppliers.sid = C.sid
     join Parts P on P.pid = C.pid
     where P.color = 'Red';
 
--- • Find the sids of suppliers who supply some red or green part.
+-- Find the sids of suppliers who supply some red or green part.
 SELECT distinct Suppliers.sid from Suppliers
     join Catalog C on Suppliers.sid = C.sid
     join Parts P on P.pid = C.pid
     where P.color = 'Red' or P.color = 'Green';
 
--- • Find the sids of suppliers who supply some red part or are at 221 Packer Street.
+-- Find the sids of suppliers who supply some red part or are at 221 Packer Street.
 SELECT distinct S.sid from Suppliers S
     join Catalog C on S.sid = C.sid
     join Parts P on P.pid = C.pid
     where P.color = 'Red' or S.address = '221 Packer Street';
 
+
+-- Find the pids of parts supplied by at least two different suppliers.
+SELECT pid
+from(
+    select *,
+    row_number() over(partition by pid) as rn
+    from Catalog) x
+where x.rn > 1;
