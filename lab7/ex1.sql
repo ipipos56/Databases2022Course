@@ -52,6 +52,8 @@ VALUES (2303, '27/02/2011',110,4011,2);
 INSERT INTO Orders(orderId, date, customerId, itemId, quant)
 VALUES (2303, '27/02/2011',110,3141,2);
 
+
+-- Calculate the total number of items per order and the total amount to pay for the order
 SELECT o.orderId, SUM(o.quant), SUM(o.quant*i.price) as Total_Amount
 FROM Customers c
 INNER JOIN Orders o on c.customerId = o.customerId
@@ -59,6 +61,7 @@ INNER JOIN Items i ON c.customerId = o.customerId AND o.itemId = i.itemId
 GROUP BY c.customerId,o.orderId
 ORDER BY o.orderId;
 
+-- Obtain the customer whose purchase in terms of money has been greater than the others
 SELECT c.customerId,o.orderId, SUM(o.quant*i.price) as Total_Amount
 FROM Customers c
 INNER JOIN Orders o on c.customerId = o.customerId
