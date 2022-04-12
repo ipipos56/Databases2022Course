@@ -1,0 +1,4 @@
+1) names of suppliers who supply red parts that cost less than 100
+2) names of suppliers who supply red parts that cost less than 100 and green parts that cost less than 100
+3) SIDs of suppliers who supply red parts that cost less than 100 and green parts that cost less than 100
+4) names of suppliers who supply red parts that cost less than 100 and green parts that cost less than 100

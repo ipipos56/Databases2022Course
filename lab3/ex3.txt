@@ -1,0 +1,2 @@
+MAC address is a unique identifier of a hardware so I use it as keys. In other cases the model of a device defines realtionship, so it's the key.
+Also I added some extensions of classes. The EER represents a computers hardware, software and accessories it's sold with.
